@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="RU">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<title>Vue JS</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div id="app">
+			<h1>Hello {{name}}</h1>
+			<hr>
+			<h1>Summ: {{ 10 + 60 }}</h1>
+			<hr>
+			<h1>{{sayHello()}}</h1>
+			<hr>
+			<h1>Ты впорядке? {{ isOk ? 'Да я впорядке!' : 'Нет я не впорядке!'}}</h1>
+			<hr>
+			<h1>{{string.split('').reverse().join('')}}</h1>
+			<h2>
+				<a v-bind:href="url" target="_blank">MySite</a>
+			</h2>
+			<hr>
+			<h2 v-html="link"></h2>
+			<hr>
+			<h2>Счетчик = {{count}}</h2>
+			<button @click="btn">Увеличить</button>
+			<hr>
+			<h2 @mouseover="onHover" @mouseout="outHover">Счетчик = {{count2}}</h2>
+			<button @click="count2++">Увеличить</button>
+			<hr>
+		</div>
+	</div>
+	
+	<script>
+		var vue = new Vue({
+			el: '#app',
+			data: {
+				name: 'Vue!',
+				isOk: true,
+				string: 'My name is Doston',
+				url: 'http://dostonbek.oml.ru/',
+				link: '<a href="http://dostonbek.oml.ru/" target="_blank">MySite Doston</a>',
+				count: 0,
+				count2: 0
+			},
+			methods: {
+				sayHello: function() {
+					return 'Привет'
+				},
+				btn: function() {
+					this.count++
+				},
+				onHover: function(event) {
+					event.target.style.color = 'red'
+				},
+				outHover: function(event) {
+					event.target.style.color = 'black'
+				}
+			}
+		})
+	</script>
+</body>
+</html>
